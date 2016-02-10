@@ -17,9 +17,9 @@ __email__ = "fdewaley@redhat.com"
 __status__ = "prod"
 
 
-import xmlrpclib, sys, getpass
+import xmlrpclib, sys, getpass, ssl
 #connection part
-client = xmlrpclib.Server("https://xmlrpc.rhn.redhat.com/rpc/api")
+client = xmlrpclib.Server("https://xmlrpc.rhn.redhat.com/rpc/api", context=ssl._create_unverified_context())
 sys.stderr.write("enter your RHN login: ")
 login = raw_input().strip()
 password = getpass.getpass(prompt="enter your RHN Password: ")
